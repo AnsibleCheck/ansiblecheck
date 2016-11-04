@@ -21,15 +21,15 @@ env:
     init: /sbin/init
     run_opts: ""
   - distribution: EL
-    distrubtion_version: 7
+    distrubtion_version: "7"
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - distribution: EL
-    distribution_version: 6
+    distribution_version: "6"
     init: /sbin/init
     run_opts: ""
   - distribution: EL
-    distribution_version: 5
+    distribution_version: "5"
     init: /sbin/init
     run_opts: ""
 
