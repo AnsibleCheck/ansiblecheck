@@ -1,16 +1,17 @@
 ---
-
 - hosts: localhost
   pre_tasks:
     - name: Update apt cache.
       apt:
         update_cache: yes
+      changed_when: False
       when: ansible_os_family == 'Debian'
   tasks:
+
     - name: Check Ansible Is Installed
       command: /usr/bin/ansible --version
-      register: ansible_version
+      register: reg_ansible_version
       changed_when: False
+
     - name: Current Ansible Version
-      debug:
-        var: "{{ ansible_version }}"
+      debug: var=reg_ansible_version

@@ -8,6 +8,10 @@ RUN apt-get update \
        python-software-properties \
     && apt-get install -y --no-install-recommends \
        ansible \
+       rsyslog \
+       systemd \
+       systemd-cron \
+       sudo \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc \
     && rm -Rf /usr/share/man \
