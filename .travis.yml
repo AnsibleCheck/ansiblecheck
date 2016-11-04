@@ -22,10 +22,10 @@ env:
     run_opts: ""
 
 script:
-  - docker build -t ansiblecheck/"${distribution}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
+  - docker build -t ansiblecheck/"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
   - container_id=$(mktemp)
   # Start The Built Container In The Background
-  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} ansiblecheck/"${distribution}"-"${distribution_version}" "${init}" > "${container_id}"'
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} ansiblecheck/"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
 
   # Ansible syntax check.
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --syntax-check'
