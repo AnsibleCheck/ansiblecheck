@@ -25,5 +25,5 @@ RUN   yum -y update; yum clean all; \
     && echo "[local]" > /etc/ansible/hosts \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts
 
-VOLUME["/sys/fs/cgroup"]
+VOLUME ["/sys/fs/cgroup"]
 CMD ["/usr/sbin/init"]
