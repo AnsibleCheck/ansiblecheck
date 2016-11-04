@@ -9,7 +9,7 @@
   tasks:
 
     - name: Check Ansible Is Installed
-      command: /usr/bin/ansible --version
+      command: /usr/bin/env ansible --version
       register: reg_ansible_version
       changed_when: False
 
