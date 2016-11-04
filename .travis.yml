@@ -1,0 +1,43 @@
+sudo: required
+language: python
+services:
+  -docker
+
+env:
+  - distribution: ubuntu
+    distribution_version: yakkety
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: ubuntu
+    distribution_version: xenial
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: ubuntu
+    distribution_version: trusty
+    init: /sbin/init
+    run_opts: ""
+  - distribution: ubuntu
+    distribution_version: precise
+    init: /sbin/init
+    run_opts: ""
+
+script:
+  - docker build -t "${distribution}"/"${distribution_version}" core/"${distribution}"/"${distribution_version}"
+  - container_id=$(mktemp)
+  # Start The Built Container In The Background
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} "${distribution}"/"${distribution_version}" "${init}" > "${container_id}"'
+
+  # Ansible syntax check.
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --syntax-check'
+
+  # Test role.
+  - 'docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
+
+  # Test Idempotence
+  - idempotence=$(mktemp)
+  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml | tee -a ${idempotence}
+  - >
+    tail ${idempotence}
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
