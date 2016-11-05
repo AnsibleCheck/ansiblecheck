@@ -18,7 +18,7 @@ RUN dnf makecache fast \
     rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
     rm -f /lib/systemd/system/basic.target.wants/*;\
     rm -f /lib/systemd/system/anaconda.target.wants/*;\
-    && echo "[local]" > /etc/ansible/hosts \
+    echo "[local]" > /etc/ansible/hosts \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts
 
 VOLUME ["sys/fs/cgroup", "/tmp", "/run"]
