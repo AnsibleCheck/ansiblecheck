@@ -3,7 +3,7 @@ MAINTAINER Christopher Davenport
 
 RUN dnf makecache fast \
     && dnf -y install \
-        systemd
+        systemd \
         ansible \
         sudo \
         which \
