@@ -3,7 +3,7 @@ MAINTAINER Christopher Davenport
 
 RUN yum makecache fast \
     && yum -y update \
-    && yum groupinstall \
+    && yum -y groupinstall \
         "Development tools" \
     && yum -y install \
         gcc \
