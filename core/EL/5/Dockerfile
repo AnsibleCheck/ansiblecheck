@@ -31,9 +31,9 @@ RUN yum makecache fast \
     && python2.7 setup.py install \
     && /usr/local/bin/easy_install-2.7 virtualenv \
     && /usr/local/bin/easy_install-2.7 pip \
-    && pip install \
-        ansible \
+    && pip2.7 install \
         cryptography \
+        ansible \
     && sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers \
     && mkdir -p /etc/ansible \
     && echo "[local]" > /etc/ansible/hosts \
