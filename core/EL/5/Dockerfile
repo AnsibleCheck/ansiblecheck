@@ -6,9 +6,6 @@ RUN yum makecache fast \
     && yum -y groupinstall \
         "Development tools" \
     && yum -y install \
-        gcc \
-        make \
-        deltarpm \
         epel-release \
         initscripts \
         zlib-devel \
@@ -23,11 +20,11 @@ RUN yum makecache fast \
     && rm Python-2.7.3.tar.bz2 \
     && cd Python-2.7.3 \
     && ./configure --prefix=/usr/local/ \
-    && make
-    && make altinstall
+    && make \
+    && make altinstall \
     && /usr/local/bin/python2.7 \
     && set -o vi \
-    && wget http://pypi.python.org/packages/source/d/distribute/distribute-0.6.27.tar.gz \
+    && wget --no-check-certificate http://pypi.python.org/packages/source/d/distribute/distribute-0.6.27.tar.gz \
     && tar xf distribute-0.6.27.tar.gz \
     && rm distribute-0.6.27.tar.gz \
     && cd distribute-0.6.27 \
