@@ -3,8 +3,11 @@ MAINTAINER Christopher Davenport
 
 RUN yum makecache fast \
     && yum -y update \
+    && yum groupinstall \
+        "Development tools" \
     && yum -y install \
         gcc \
+        make \
         deltarpm \
         epel-release \
         initscripts \
