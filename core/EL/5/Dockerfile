@@ -4,6 +4,7 @@ MAINTAINER Christopher Davenport
 RUN yum makecache fast \
     && yum -y update \
     && yum -y install \
+        gcc \
         deltarpm \
         epel-release \
         initscripts \
