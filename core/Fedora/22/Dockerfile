@@ -18,7 +18,6 @@ RUN dnf makecache fast \
     rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
     rm -f /lib/systemd/system/basic.target.wants/*;\
     rm -f /lib/systemd/system/anaconda.target.wants/*;\
-    sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers \
     && echo "[local]" > /etc/ansible/hosts \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts
 
