@@ -38,8 +38,8 @@ env:
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - distribution: Debian
     distribution_version: wheezy
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    init: /sbin/init
+    run_opts: ""
   - distribution: Fedora
     distribution_version: "24"
     init: /usr/lib/systemd/systemd
