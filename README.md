@@ -1,12 +1,23 @@
 AnsibleCheck
 =============
 
-[![Build Status](https://travis-ci.org/AnsibleCheck/ansiblecheck.svg?branch=master)](https://travis-ci.org/AnsibleCheck/ansiblecheck)
-[![Docker Automated build](https://img.shields.io/docker/automated/ansiblecheck/ansiblecheck.svg?maxAge=2592000)](https://hub.docker.com/r/ansiblecheck/ansiblecheck/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/ansiblecheck/ansiblecheck.svg)](https://hub.docker.com/r/ansiblecheck/ansiblecheck/)
-
+[![Build Status](https://travis-ci.org/AnsibleCheck/ansiblecheck.svg?branch=master)](https://travis-ci.org/AnsibleCheck/ansiblecheck) [![GitHub issues](https://img.shields.io/github/issues/ansiblecheck/ansiblecheck.svg)](https://github.com/AnsibleCheck/ansiblecheck)   [![Docker Automated build](https://img.shields.io/docker/automated/ansiblecheck/ansiblecheck.svg?maxAge=2592000)](https://hub.docker.com/r/ansiblecheck/ansiblecheck/) [![Docker Pulls](https://img.shields.io/docker/pulls/ansiblecheck/ansiblecheck.svg)](https://hub.docker.com/r/ansiblecheck/ansiblecheck/)
 
 A One Stop Solution For Checking Your Ansible Roles and Playbooks.
+
+### Docker Images
+
+*   [```ubuntu-12.04```, ```ubuntu-precise``` (*ubuntu-precise/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/precise/Dockerfile)
+*   [```ubuntu-14.04```, ```ubuntu-trusty``` (*ubuntu-trusty/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/trusty/Dockerfile)
+*   [```ubuntu-16.04```, ```ubuntu-xenial``` (*ubuntu-xenial/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/xenial/Dockerfile)
+*   [```ubuntu-16.10```, ```ubuntu-yakkety``` (*ubuntu-yakkety/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/yakkety/Dockerfile)
+*   [```debian-8```, ```debian-jessie``` (*debian-jessie/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/jessie/Dockerfile)
+*   [```debian-7```, ```debian-wheezy``` (*debian-jessie/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/wheezy/Dockerfile)
+*   [```centos-7```, ```el-7```  (*el-7/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/7/Dockerfile)
+*   [```centos-6```, ```el-6```  (*el-6/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/6/Dockerfile)
+*   [```fedora-24``` (*fedora-24/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Fedora/24/Dockerfile)
+*   [```fedora-23``` (*fedora-23/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Fedora/23/Dockerfile)
+
 
 ### General Principles
 
@@ -25,7 +36,6 @@ testing Ansible roles and playbooks.
 If this is intended for automated testing, then travis builds are highly preferable
 because they allow you to demonstrate on your galaxy role that it can actually
 support the operating systems you claim to support.
-
 
 ### How To Use
 
@@ -75,7 +85,7 @@ docker exec "$(cat ${container_id})" ansible-playbook \
  /etc/ansible/roles/role_under_test/tests/test.yml
 ```
 
-#### The current list of combinations for ansiblecheck.
+### AnsibleCheck Configurations
 
 You can comment out an environment with # on each line of the list item.
 
@@ -122,7 +132,7 @@ You can comment out an environment with # on each line of the list item.
   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 ```
 
-#### Current List of Operating System Roles For Ansible Galaxy
+### Ansible Galaxy Configurations
 
 ```yaml
 platforms:
@@ -298,3 +308,10 @@ Submit a pull request to add your project to the list.
 *   Universal Oracle Client [ChristopherDavenport.universal-oracle-client](https://galaxy.ansible.com/ChristopherDavenport/universal-oracle-client/)
 *   International Components for Unicode [ChristopherDavenport.icu](https://galaxy.ansible.com/ChristopherDavenport/icu/)
 *   GnuCOBOL [ChristopherDavenport.gnu-cobol](https://galaxy.ansible.com/ChristopherDavenport/gnu-cobol/)
+
+#### Attribution
+
+A significant piece of the base work came from groundwork laid out
+by [geerlingguy](https://github.com/geerlingguy) for testing his own roles
+internally. Now hopefully we can all work towards building better roles where
+we are certain of the functionality they provide on multiple systems
