@@ -58,7 +58,8 @@ Check run_opts and init for the travis build
 ```shell
 docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro \
 --privileged \
---volume=/sys/fs/cgroup:/sys/fs/cgroup:ro ansiblecheck/ansiblecheck:ubuntu-xenial \ /usr/lib/systemd/systemd
+--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro ansiblecheck/ansiblecheck:ubuntu-xenial \
+/usr/lib/systemd/systemd
 ```
 
 4.  Finally Utilize Ansible Inside of the Container Space To See That The Role
