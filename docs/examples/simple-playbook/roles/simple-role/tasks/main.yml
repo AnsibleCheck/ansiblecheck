@@ -1,0 +1,9 @@
+---
+
+- name: Check Ansible Is Installed
+  command: /usr/bin/env ansible --version
+  register: reg_ansible_version
+  changed_when: False
+
+- name: Current Ansible Version
+  debug: var=reg_ansible_version
