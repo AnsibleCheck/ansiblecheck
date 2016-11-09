@@ -33,10 +33,6 @@ env:
   #   init: /sbin/init
   #   run_opts: ""
   - distribution: Debian
-    distribution_version: stretch
-    init: /bin/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Debian
     distribution_version: jessie
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
@@ -52,8 +48,6 @@ env:
     distribution_version: "23"
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-
-
 
 script:
   - docker build -t ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
