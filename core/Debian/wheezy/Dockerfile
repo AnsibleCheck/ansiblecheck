@@ -13,7 +13,7 @@ RUN apt-get update \
     && rm -Rf /usr/share/doc \
     && rm -Rf /usr/share/man \
     && apt-get clean \
-    && pip install --upgrade pip \
+    && /usr/bin/pip install --upgrade pip \
     && /usr/local/bin/pip install \
         ansible \
         cryptography \
