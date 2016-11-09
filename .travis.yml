@@ -49,8 +49,6 @@ env:
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
-
-
 script:
   - docker build -t ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
   - container_id=$(mktemp)
