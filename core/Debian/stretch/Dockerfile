@@ -1,4 +1,4 @@
-FROM debian:wheezy-backports
+FROM debian:stretch
 MAINTAINER Christopher Davenport
 
 RUN apt-get update \
@@ -9,6 +9,7 @@ RUN apt-get update \
        libssl-dev \
        python-pip \
        python-dev \
+       python-setuptools \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc \
     && rm -Rf /usr/share/man \

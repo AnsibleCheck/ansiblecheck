@@ -1,7 +1,9 @@
-FROM debian:jessie
+FROM debian:jessie-backports
 MAINTAINER Christopher Davenport
 
 RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+       apt-utils \
     && apt-get install -y --no-install-recommends \
        sudo \
        build-essential \
@@ -10,8 +12,10 @@ RUN apt-get update \
        python-pip \
        python-dev \
     && rm -rf /var/lib/apt/lists/* \
-    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+    && rm -Rf /usr/share/doc \
+    && rm -Rf /usr/share/man \
     && apt-get clean \
+    && pip install --upgrade pip \
     && pip install \
         ansible \
         cryptography \
