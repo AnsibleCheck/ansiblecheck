@@ -14,7 +14,7 @@ RUN apt-get update \
     && rm -Rf /usr/share/man \
     && apt-get clean \
     && pip install --upgrade pip \
-    && pip install \
+    && /usr/local/bin/pip install \
         ansible \
         cryptography \
     && mkdir -p /etc/ansible \
