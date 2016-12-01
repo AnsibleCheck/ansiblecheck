@@ -6,6 +6,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        software-properties-common \
        python-software-properties \
+    && apt-add-repository -y ppa:ansible/ansible \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
        ansible \
        rsyslog \
