@@ -22,15 +22,15 @@ A One Stop Solution For Checking Your Ansible Roles and Playbooks.
 ### General Principles
 
 AnsibleCheck utilizes Docker to deploy test boxes with Ansible built into the
-images. By then loading your generated roles into these docker instances you
-images you can check to insure compliance with the platforms that you claim your
+images. By then loading your generated roles into these docker instances
+you can check to insure compliance with the platforms that you claim your
 role supports.
 
 In this project we utilize the same naming conventions that are offered in
 an Ansible galaxy project as well as more standard conventions by secondary tags.
 
 Differing platforms have differing initialization scripts. None of these images
-are intended for production use. They are entirely build for the purpose of
+are intended for production use. They are entirely built for the purpose of
 testing Ansible roles and playbooks.
 
 If this is intended for automated testing, then travis builds are highly preferable
