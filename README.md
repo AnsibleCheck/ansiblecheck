@@ -304,10 +304,11 @@ platforms:
 
 Submit a pull request to add your project to the list.
 
-*   Universal Java Installer [ChristopherDavenport.universal-java](https://galaxy.ansible.com/ChristopherDavenport/universal-java/)
-*   Universal Oracle Client [ChristopherDavenport.universal-oracle-client](https://galaxy.ansible.com/ChristopherDavenport/universal-oracle-client/)
-*   International Components for Unicode [ChristopherDavenport.icu](https://galaxy.ansible.com/ChristopherDavenport/icu/)
-*   GnuCOBOL [ChristopherDavenport.gnu-cobol](https://galaxy.ansible.com/ChristopherDavenport/gnu-cobol/)
+*   [carlosbuenosvinos.ansistrano-deploy](https://galaxy.ansible.com/carlosbuenosvinos/ansistrano-deploy/)
+*   [ChristopherDavenport.universal-java](https://galaxy.ansible.com/ChristopherDavenport/universal-java/)
+*   [ChristopherDavenport.universal-oracle-client](https://galaxy.ansible.com/ChristopherDavenport/universal-oracle-client/)
+*   [ChristopherDavenport.icu](https://galaxy.ansible.com/ChristopherDavenport/icu/)
+*   [ChristopherDavenport.gnu-cobol](https://galaxy.ansible.com/ChristopherDavenport/gnu-cobol/)
 
 #### Attribution
 
