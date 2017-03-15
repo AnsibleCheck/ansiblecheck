@@ -1,7 +1,8 @@
 FROM oraclelinux:7.0
 MAINTAINER Christopher Davenport
 
-RUN wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; \
+RUN yum -y install wget; \
+    wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; \
     rpm -ivh epel-release-latest-7.noarch.rpm; \
     yum -y update; yum clean all; \
     (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
