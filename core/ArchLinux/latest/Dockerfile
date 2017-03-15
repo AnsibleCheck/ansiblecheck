@@ -1,7 +1,7 @@
 FROM dock0/arch
 MAINTAINER Christopher Davenport
 
-RUN pacman -Syu --noconfirm ansible sudo which initscripts \
+RUN pacman -Syu --noconfirm ansible sudo which \
     && sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers \
     && echo "[local]" > /etc/ansible/hosts \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts
