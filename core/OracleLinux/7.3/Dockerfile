@@ -1,4 +1,4 @@
-FROM oraclelinux:7.2
+FROM oraclelinux:7.3
 MAINTAINER Christopher Davenport
 
 RUN yum -y install wget; \

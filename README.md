@@ -17,7 +17,13 @@ A One Stop Solution For Checking Your Ansible Roles and Playbooks.
 *   [```centos-6```, ```el-6```  (*el-6/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/6/Dockerfile)
 *   [```fedora-24``` (*fedora-24/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Fedora/24/Dockerfile)
 *   [```fedora-23``` (*fedora-23/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Fedora/23/Dockerfile)
-
+*   [```oraclelinux-7```, ```oraclelinux-7.3``` (*oraclelinux-7.3/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.3/Dockerfile)
+*   [```oraclelinux-7.2``` (*oraclelinux-7.2/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.2/Dockerfile)
+*   [```oraclelinux-7.1``` (*oraclelinux-7.1/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.1/Dockerfile)
+*   [```oraclelinux-7.0``` (*oraclelinux-7.0/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.0/Dockerfile)
+*   [```oraclelinux-6```, ```oraclelinux-6.8``` (*oraclelinux-6.8/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.8/Dockerfile)
+*   [```oraclelinux-6.7``` (*oraclelinux-6.7/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.7/Dockerfile)
+*   [```oraclelinux-6.6``` (*oraclelinux-6.6/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.6/Dockerfile)
 
 ### General Principles
 
