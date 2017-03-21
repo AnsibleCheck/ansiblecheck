@@ -1,4 +1,4 @@
-FROM opensuse:42.1
+FROM opensuse:42.2
 MAINTAINER Christopher Davenport
 
 RUN zypper addrepo http://download.opensuse.org/repositories/systemsmanagement/openSUSE_Leap_42.2/systemsmanagement.repo \
