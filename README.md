@@ -25,6 +25,8 @@ A One Stop Solution For Checking Your Ansible Roles and Playbooks.
 *   [```oraclelinux-6```, ```oraclelinux-6.8``` (*oraclelinux-6.8/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.8/Dockerfile)
 *   [```oraclelinux-6.7``` (*oraclelinux-6.7/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.7/Dockerfile)
 *   [```oraclelinux-6.6``` (*oraclelinux-6.6/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.6/Dockerfile)
+*   [```opensuse-42.2``` ```opensuse-leap``` (*opensuse-42.2/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/opensuse/42.2/Dockerfile)
+*   [```opensuse-42.1``` (*opensuse-42.1/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/opensuse/42.2/Dockerfile)
 
 ### General Principles
 
