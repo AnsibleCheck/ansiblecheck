@@ -3,7 +3,7 @@ MAINTAINER Christopher Davenport
 
 RUN zypper --non-interactive addrepo http://download.opensuse.org/repositories/systemsmanagement/openSUSE_Leap_42.2/systemsmanagement.repo \
     && zypper --non-interactive refresh \
-    && zypper --non-interactive install ansible \
+    && zypper --non-interactive install -y ansible \
     && sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers \
     && echo "[local]" > /etc/ansible/hosts \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts
