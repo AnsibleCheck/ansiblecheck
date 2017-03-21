@@ -76,6 +76,15 @@ env:
     distribution_version: "6.6"
     init: /sbin/init
     run_opts: ""
+  - distribution: opensuse
+    distribution_version: "42.2"
+    init: /usr/lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: opensuse
+    distribution_version: "42.1"
+    init: /usr/lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+
 
 script:
   - docker build -t ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
