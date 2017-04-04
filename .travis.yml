@@ -49,7 +49,7 @@ env:
     init: /usr/lib/systemd/systemd
   - distribution: NixOS
     distribution_version: latest
-    init: /nix/store/4rw227yif8l46w3l99jv0hgq66a38a72-user-environment/lib/systemd/systemd
+    init: /nix/store/4mhj2swvnacffi9zyj54gd5ig343jwga-systemd-232/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - distribution: OracleLinux
     distribution_version: "7.3"

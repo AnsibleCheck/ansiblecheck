@@ -10,4 +10,4 @@ RUN nix-channel --add http://nixos.org/channels/nixpkgs-unstable \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts
 
 VOLUME ["/sys/fs/cgroup"]
-CMD ["/usr/sbin/init"]
+CMD ["/nix/store/4mhj2swvnacffi9zyj54gd5ig343jwga-systemd-232/lib/systemd/systemd"]
