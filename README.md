@@ -1,6 +1,8 @@
 AnsibleCheck
 =============
 
+[![Join the chat at https://gitter.im/AnsibleCheck/ansiblecheck](https://badges.gitter.im/AnsibleCheck/ansiblecheck.svg)](https://gitter.im/AnsibleCheck/ansiblecheck?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/AnsibleCheck/ansiblecheck.svg?branch=master)](https://travis-ci.org/AnsibleCheck/ansiblecheck) [![GitHub issues](https://img.shields.io/github/issues/ansiblecheck/ansiblecheck.svg)](https://github.com/AnsibleCheck/ansiblecheck)   [![Docker Automated build](https://img.shields.io/docker/automated/ansiblecheck/ansiblecheck.svg?maxAge=2592000)](https://hub.docker.com/r/ansiblecheck/ansiblecheck/) [![Docker Pulls](https://img.shields.io/docker/pulls/ansiblecheck/ansiblecheck.svg)](https://hub.docker.com/r/ansiblecheck/ansiblecheck/)
 
 A One Stop Solution For Checking Your Ansible Roles and Playbooks.
