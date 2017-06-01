@@ -1,7 +1,0 @@
-#!/bin/sh
-
-while true;
-do
-  echo "Hi, it's Dave; I'm alive!"
-  sleep 1
-done

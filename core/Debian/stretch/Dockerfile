@@ -22,6 +22,3 @@ RUN apt-get update \
     && mkdir -p /etc/ansible \
     && echo "[local]" > /etc/ansible/hosts \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts
-
-COPY davedaemon /usr/local/bin/
-RUN chmod 755 /usr/local/bin/davedaemon
