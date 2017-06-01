@@ -11,12 +11,14 @@ RUN apt-get update \
        libssl-dev \
        python-pip \
        python-dev \
+       python-wheel \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc \
     && rm -Rf /usr/share/man \
     && apt-get clean \
     && pip install --upgrade pip \
-    && pip install \
+# now using new pip version installed in /usr/local/bin
+    && /usr/local/bin/pip install \
         ansible \
         cryptography \
     && mkdir -p /etc/ansible \
