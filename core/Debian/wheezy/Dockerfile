@@ -4,6 +4,7 @@ MAINTAINER Christopher Davenport
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        sudo \
+       ca-certificates \
        build-essential \
        libffi-dev \
        libssl-dev \
