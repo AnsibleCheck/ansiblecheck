@@ -3,6 +3,7 @@ MAINTAINER Christopher Davenport
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
+       systemd-sysv \
        sudo \
        build-essential \
        libffi-dev \
