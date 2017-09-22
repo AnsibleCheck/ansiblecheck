@@ -318,6 +318,7 @@ Submit a pull request to add your project to the list.
 *   [ChristopherDavenport.universal-oracle-client](https://galaxy.ansible.com/ChristopherDavenport/universal-oracle-client/)
 *   [ChristopherDavenport.icu](https://galaxy.ansible.com/ChristopherDavenport/icu/)
 *   [ChristopherDavenport.gnu-cobol](https://galaxy.ansible.com/ChristopherDavenport/gnu-cobol/)
+*   [eNiXHosting](https://galaxy.ansible.com/eNiXHosting/)
 
 #### Attribution
 
