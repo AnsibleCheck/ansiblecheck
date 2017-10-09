@@ -11,8 +11,9 @@ A One Stop Solution For Checking Your Ansible Roles and Playbooks.
 *   [```ubuntu-14.04```, ```ubuntu-trusty``` (*ubuntu-trusty/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/trusty/Dockerfile)
 *   [```ubuntu-16.04```, ```ubuntu-xenial``` (*ubuntu-xenial/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/xenial/Dockerfile)
 *   [```ubuntu-16.10```, ```ubuntu-yakkety``` (*ubuntu-yakkety/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/yakkety/Dockerfile)
+*   [```debian-9```, ```debian-stretch``` (*debian-stretch/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/stretch/Dockerfile)
 *   [```debian-8```, ```debian-jessie``` (*debian-jessie/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/jessie/Dockerfile)
-*   [```debian-7```, ```debian-wheezy``` (*debian-jessie/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/wheezy/Dockerfile)
+*   [```debian-7```, ```debian-wheezy``` (*debian-wheezy/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/wheezy/Dockerfile)
 *   [```centos-7```, ```el-7```  (*el-7/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/7/Dockerfile)
 *   [```centos-6```, ```el-6```  (*el-6/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/6/Dockerfile)
 *   [```fedora-24``` (*fedora-24/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Fedora/24/Dockerfile)
@@ -123,6 +124,10 @@ You can comment out an environment with # on each line of the list item.
   distribution_version: "6"
   init: /sbin/init
   run_opts: ""
+- distribution: Debian
+  distribution_version: stretch
+  init: /lib/systemd/systemd
+  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 - distribution: Debian
   distribution_version: jessie
   init: /lib/systemd/systemd
