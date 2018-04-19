@@ -3,6 +3,10 @@ services: docker
 
 env:
   - distribution: Ubuntu
+    distribution_version: bionic
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: Ubuntu
     distribution_version: yakkety
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
