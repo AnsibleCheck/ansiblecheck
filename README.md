@@ -11,6 +11,7 @@ A One Stop Solution For Checking Your Ansible Roles and Playbooks.
 *   [```ubuntu-14.04```, ```ubuntu-trusty``` (*ubuntu-trusty/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/trusty/Dockerfile)
 *   [```ubuntu-16.04```, ```ubuntu-xenial``` (*ubuntu-xenial/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/xenial/Dockerfile)
 *   [```ubuntu-16.10```, ```ubuntu-yakkety``` (*ubuntu-yakkety/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/yakkety/Dockerfile)
+*   [```ubuntu-18.04```, ```ubuntu-bionic``` (*ubuntu-bionic/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/bionic/Dockerfile)
 *   [```debian-9```, ```debian-stretch``` (*debian-stretch/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/stretch/Dockerfile)
 *   [```debian-8```, ```debian-jessie``` (*debian-jessie/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/jessie/Dockerfile)
 *   [```debian-7```, ```debian-wheezy``` (*debian-wheezy/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/wheezy/Dockerfile)
@@ -100,6 +101,10 @@ docker exec "$(cat ${container_id})" ansible-playbook \
 You can comment out an environment with # on each line of the list item.
 
 ```yaml
+- distribution: Ubuntu
+  distribution_version: bionic
+  init: /lib/systemd/systemd
+  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 - distribution: Ubuntu
   distribution_version: yakkety
   init: /lib/systemd/systemd
@@ -252,6 +257,7 @@ platforms:
       - vivid
       - wily
       - xenial
+      - bionic
   - name: Debian
     versions:
       - all
