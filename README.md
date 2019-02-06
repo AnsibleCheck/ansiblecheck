@@ -7,28 +7,17 @@ A One Stop Solution For Checking Your Ansible Roles and Playbooks.
 
 ### Docker Images
 
-*   [```ubuntu-12.04```, ```ubuntu-precise``` (*ubuntu-precise/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/precise/Dockerfile)
-*   [```ubuntu-14.04```, ```ubuntu-trusty``` (*ubuntu-trusty/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/trusty/Dockerfile)
 *   [```ubuntu-16.04```, ```ubuntu-xenial``` (*ubuntu-xenial/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/xenial/Dockerfile)
-*   [```ubuntu-16.10```, ```ubuntu-yakkety``` (*ubuntu-yakkety/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/yakkety/Dockerfile)
 *   [```ubuntu-18.04```, ```ubuntu-bionic``` (*ubuntu-bionic/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/bionic/Dockerfile)
 *   [```debian-9```, ```debian-stretch``` (*debian-stretch/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/stretch/Dockerfile)
 *   [```debian-8```, ```debian-jessie``` (*debian-jessie/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/jessie/Dockerfile)
-*   [```debian-7```, ```debian-wheezy``` (*debian-wheezy/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/wheezy/Dockerfile)
 *   [```centos-7```, ```el-7```  (*el-7/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/7/Dockerfile)
 *   [```centos-6```, ```el-6```  (*el-6/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/6/Dockerfile)
 *   [```fedora-24``` (*fedora-24/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Fedora/24/Dockerfile)
-*   [```fedora-23``` (*fedora-23/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Fedora/23/Dockerfile)
 *   [```archlinux-latest``` (*archlinux-latest/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/ArchLinux/latest/Dockerfile)
 *   [```oraclelinux-7```, ```oraclelinux-7.3``` (*oraclelinux-7.3/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.3/Dockerfile)
-*   [```oraclelinux-7.2``` (*oraclelinux-7.2/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.2/Dockerfile)
-*   [```oraclelinux-7.1``` (*oraclelinux-7.1/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.1/Dockerfile)
-*   [```oraclelinux-7.0``` (*oraclelinux-7.0/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/7.0/Dockerfile)
 *   [```oraclelinux-6```, ```oraclelinux-6.8``` (*oraclelinux-6.8/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.8/Dockerfile)
-*   [```oraclelinux-6.7``` (*oraclelinux-6.7/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.7/Dockerfile)
-*   [```oraclelinux-6.6``` (*oraclelinux-6.6/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/OracleLinux/6.6/Dockerfile)
 *   [```opensuse-42.2``` ```opensuse-leap``` (*opensuse-42.2/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/opensuse/42.2/Dockerfile)
-*   [```opensuse-42.1``` (*opensuse-42.1/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/opensuse/42.2/Dockerfile)
 
 ### General Principles
 
@@ -106,21 +95,9 @@ You can comment out an environment with # on each line of the list item.
   init: /lib/systemd/systemd
   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 - distribution: Ubuntu
-  distribution_version: yakkety
-  init: /lib/systemd/systemd
-  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-- distribution: Ubuntu
   distribution_version: xenial
   init: /lib/systemd/systemd
   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-- distribution: Ubuntu
-  distribution_version: trusty
-  init: /sbin/init
-  run_opts: ""
-- distribution: Ubuntu
-  distribution_version: precise
-  init: /sbin/init
-  run_opts: ""
 - distribution: EL
   distribution_version: "7"
   init: /usr/lib/systemd/systemd
@@ -137,16 +114,8 @@ You can comment out an environment with # on each line of the list item.
   distribution_version: jessie
   init: /lib/systemd/systemd
   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-- distribution: Debian
-  distribution_version: wheezy
-  init: /sbin/init
-  run_opts: ""
 - distribution: Fedora
   distribution_version: "24"
-  init: /usr/lib/systemd/systemd
-  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-- distribution: Fedora
-  distribution_version: "23"
   init: /usr/lib/systemd/systemd
   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 ```
