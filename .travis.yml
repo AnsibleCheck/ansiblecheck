@@ -9,21 +9,9 @@ env:
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - distribution: Ubuntu
-    distribution_version: yakkety
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Ubuntu
     distribution_version: xenial
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Ubuntu
-    distribution_version: trusty
-    init: /sbin/init
-    run_opts: ""
-  - distribution: Ubuntu
-    distribution_version: precise
-    init: /sbin/init
-    run_opts: ""
   - distribution: EL
     distribution_version: "7"
     init: /usr/lib/systemd/systemd
@@ -40,16 +28,8 @@ env:
     distribution_version: jessie
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Debian
-    distribution_version: wheezy
-    init: /sbin/init
-    run_opts: ""
   - distribution: Fedora
     distribution_version: "24"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Fedora
-    distribution_version: "23"
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - distribution: ArchLinux
@@ -61,35 +41,11 @@ env:
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - distribution: OracleLinux
-    distribution_version: "7.2"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: OracleLinux
-    distribution_version: "7.1"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: OracleLinux
-    distribution_version: "7.0"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: OracleLinux
     distribution_version: "6.8"
-    init: /sbin/init
-    run_opts: ""
-  - distribution: OracleLinux
-    distribution_version: "6.7"
-    init: /sbin/init
-    run_opts: ""
-  - distribution: OracleLinux
-    distribution_version: "6.6"
     init: /sbin/init
     run_opts: ""
   - distribution: opensuse
     distribution_version: "42.2"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: opensuse
-    distribution_version: "42.1"
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
