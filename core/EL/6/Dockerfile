@@ -9,9 +9,16 @@ RUN yum makecache fast \
     && yum -y update \
     && yum -y install \
         ansible \
+        ansible-lint \
         sudo \
         which \
-    && yum clean all \
+        python34 \
+    && yum clean all
+
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+    && python3 get-pip.py \
+    && pip install \
+      yamllint \
     && sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers \
     && echo "[local]" > /etc/ansible/hosts \
     && echo "localhost ansible_connection=local" >> /etc/ansible/hosts

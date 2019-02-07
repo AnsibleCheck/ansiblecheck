@@ -18,6 +18,8 @@ RUN   yum -y update; yum clean all; \
     && yum -y update \
     && yum -y install \
         ansible \
+        ansible-lint \
+        yamllint \
         sudo \
         which \
     && yum clean all \
