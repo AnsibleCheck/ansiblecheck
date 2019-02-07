@@ -7,15 +7,19 @@
       register: reg_ansible_version
       changed_when: False
 
+# ansible-lint is not installed on all distro
     - name: Check Ansible-lint Is Installed
       command: ansible-lint --version
       register: reg_ansible_lint_version
       changed_when: False
+      ignore_errors: true
 
+# yamllint is not installed on all distro
     - name: Check Yamllint Is Installed
       command: yamllint --version
       register: reg_yamllint_version
       changed_when: False
+      ignore_errors: true
 
     - name: Ansible Installed version
       debug:
@@ -23,6 +27,8 @@
     - name: Ansible-lint Installed version
       debug:
         msg: "Ansible-lint: {{ reg_ansible_lint_version.stdout }}"
+      when: reg_ansible_lint_version.failed == false
     - name: Yamllint Installed version
       debug:
         msg: "Yamllint: {{ reg_yamllint_version.stderr }}"
+      when: reg_yamllint_version.failed == false
