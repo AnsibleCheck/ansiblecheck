@@ -13,7 +13,9 @@ RUN apt-get update \
     # && pip install --upgrade pip \
     && pip install \
         ansible \
-        cryptography
+        cryptography \
+        yamllint \
+        ansible-lint
 
 FROM debian:stretch
 COPY --from=builder /usr/local/ /usr/local/

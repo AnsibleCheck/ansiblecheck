@@ -1,17 +1,34 @@
 ---
 - hosts: localhost
-  pre_tasks:
-    - name: Update apt cache.
-      apt:
-        update_cache: yes
-      changed_when: False
-      when: ansible_os_family == 'Debian'
   tasks:
 
     - name: Check Ansible Is Installed
-      command: /usr/bin/env ansible --version
+      command: ansible --version
       register: reg_ansible_version
       changed_when: False
 
-    - name: Current Ansible Version
-      debug: var=reg_ansible_version
+# ansible-lint is not installed on all distro
+    - name: Check Ansible-lint Is Installed
+      command: ansible-lint --version
+      register: reg_ansible_lint_version
+      changed_when: False
+      ignore_errors: true
+
+# yamllint is not installed on all distro
+    - name: Check Yamllint Is Installed
+      command: yamllint --version
+      register: reg_yamllint_version
+      changed_when: False
+      ignore_errors: true
+
+    - name: Ansible Installed version
+      debug:
+        msg: "Ansible: {{ reg_ansible_version.stdout_lines[0] }}"
+    - name: Ansible-lint Installed version
+      debug:
+        msg: "Ansible-lint: {{ reg_ansible_lint_version.stdout }}"
+      when: reg_ansible_lint_version.failed == false
+    - name: Yamllint Installed version
+      debug:
+        msg: "Yamllint: {{ reg_yamllint_version.stderr }}"
+      when: reg_yamllint_version.failed == false

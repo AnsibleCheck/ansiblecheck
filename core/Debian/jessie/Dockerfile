@@ -14,7 +14,9 @@ RUN apt-get update \
     && pip install --upgrade pip \
     && /usr/local/bin/pip install \
        ansible \
-       cryptography
+       cryptography \
+       yamllint \
+       ansible-lint
 
 FROM debian:jessie-backports
 COPY --from=builder /usr/local/ /usr/local/
@@ -23,6 +25,7 @@ RUN apt-get update \
        sudo \
        libffi6 \
        python \
+       python-six \
        ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc \
