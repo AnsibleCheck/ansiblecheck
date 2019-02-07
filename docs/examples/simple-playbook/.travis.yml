@@ -47,8 +47,15 @@ script:
   # Start The Built Container In The Background
   - 'docker run --detach --volume="${PWD}":/etc/ansible/playbooks:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
 
+  # Install requirements, Uncomment if needed
+  # - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=true ansible-galaxy install -v -r /etc/ansible/roles/role_under_test/requirements.yml'
+
   # Ansible syntax check.
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/playbooks/tests/test.yml --syntax-check'
+
+  # Run linters
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-lint /etc/ansible/roles/role_under_test/tasks/main.yml'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm yamllint /etc/ansible/roles/role_under_test/'
 
   # Test role.
   - 'docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/playbooks/tests/test.yml'
