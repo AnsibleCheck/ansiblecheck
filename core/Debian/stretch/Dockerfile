@@ -10,7 +10,7 @@ RUN apt-get update \
        python-dev \
        python-setuptools \
        python-wheel \
-    && pip install --upgrade pip \
+    # && pip install --upgrade pip \
     && pip install \
         ansible \
         cryptography
