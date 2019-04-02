@@ -8,4 +8,5 @@ docker push "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_version}"
   {
   docker tag "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_version}" "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_alias}" &&
   docker push "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_alias}"
-}
+} &&
+: || exit 2
