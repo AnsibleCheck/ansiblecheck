@@ -76,6 +76,6 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: bash -e pushtoregistry.sh
+  script: bash pushtoregistry.sh
   on:
     branch: travis-build
