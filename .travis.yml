@@ -78,4 +78,4 @@ deploy:
   skip_cleanup: true
   script: bash pushtoregistry.sh
   on:
-    branch: travis-build
+    branch: master
