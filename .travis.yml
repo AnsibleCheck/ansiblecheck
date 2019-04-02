@@ -6,7 +6,7 @@ services:
 
 env:
   global:
-    - DOCKER_IMAGE_SLUG: $TRAVIS_REPO_SLUG
+    - DOCKER_IMAGE_SLUG: "${TRAVIS_REPO_SLUG,,}"
   matrix:
     - distribution: Ubuntu
       distribution_version: bionic
@@ -76,6 +76,6 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: bash pushtoregistry.sh
+  script: bash -e pushtoregistry.sh
   on:
     branch: travis-build
