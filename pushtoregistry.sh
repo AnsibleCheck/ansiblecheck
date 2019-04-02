@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+docker push "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_version}"
+[[ $distribution_alias ]] && \
+  docker tag "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_version}" ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_alias}" \
+  docker push "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_alias}"
