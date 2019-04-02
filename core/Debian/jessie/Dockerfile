@@ -1,4 +1,4 @@
-FROM debian:jessie-backports as builder
+FROM debian:jessie as builder
 MAINTAINER Christopher Davenport
 
 RUN apt-get update \
@@ -18,7 +18,7 @@ RUN apt-get update \
        yamllint \
        ansible-lint
 
-FROM debian:jessie-backports
+FROM debian:jessie
 COPY --from=builder /usr/local/ /usr/local/
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
