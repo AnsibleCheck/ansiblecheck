@@ -1,63 +1,71 @@
 sudo: required
-language: python
+language: minimal
+dist: xenial
 services:
   - docker
 
 env:
-  - distribution: Ubuntu
-    distribution_version: bionic
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Ubuntu
-    distribution_version: xenial
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: EL
-    distribution_version: "7"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: EL
-    distribution_version: "6"
-    init: /sbin/init
-    run_opts: ""
-  - distribution: Debian
-    distribution_version: stretch
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Debian
-    distribution_version: jessie
-    init: /lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: Fedora
-    distribution_version: "24"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: ArchLinux
-    distribution_version: latest
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: OracleLinux
-    distribution_version: "7.3"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-  - distribution: OracleLinux
-    distribution_version: "6.8"
-    init: /sbin/init
-    run_opts: ""
-  - distribution: opensuse
-    distribution_version: "42.2"
-    init: /usr/lib/systemd/systemd
-    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  global:
+    - DOCKER_IMAGE_SLUG: "${TRAVIS_REPO_SLUG,,}"
+  matrix:
+    - distribution: Ubuntu
+      distribution_version: bionic
+      distribution_alias: 18.04
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: Ubuntu
+      distribution_version: xenial
+      distribution_alias: 16.04
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: EL
+      distribution_version: "7"
+      init: /usr/lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: EL
+      distribution_version: "6"
+      init: /sbin/init
+      run_opts: ""
+    - distribution: Debian
+      distribution_version: stretch
+      distribution_alias: 9
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: Debian
+      distribution_version: jessie
+      distribution_alias: 8
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: Fedora
+      distribution_version: "24"
+      init: /usr/lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: ArchLinux
+      distribution_version: latest
+      init: /usr/lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: OracleLinux
+      distribution_version: "7.3"
+      init: /usr/lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: OracleLinux
+      distribution_version: "6.8"
+      init: /sbin/init
+      run_opts: ""
+    - distribution: opensuse
+      distribution_version: "42.2"
+      init: /usr/lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 before_install:
   - sudo apt-get update
   - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
 
 script:
-  - docker build -t ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
+  - docker build -t "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_version}" core/"${distribution}"/"${distribution_version}"
   - container_id=$(mktemp)
   # Start The Built Container In The Background
-  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
+  - 'docker run --detach --volume="${PWD}":/etc/ansible/roles/role_under_test:ro ${run_opts} "${DOCKER_IMAGE_SLUG}":"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"'
 
   # Ansible syntax check.
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml --syntax-check'
@@ -65,11 +73,9 @@ script:
   # Test role.
   - 'docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml'
 
-  # Test Idempotence
-  - idempotence=$(mktemp)
-  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/role_under_test/tests/test.yml | tee -a ${idempotence}
-  - >
-    tail ${idempotence}
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash pushtoregistry.sh
+  on:
+    branch: master
