@@ -108,6 +108,10 @@ You can comment out an environment with # on each line of the list item.
   init: /sbin/init
   run_opts: ""
 - distribution: Debian
+  distribution_version: buster
+  init: /lib/systemd/systemd
+  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+- distribution: Debian
   distribution_version: stretch
   init: /lib/systemd/systemd
   run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
@@ -230,14 +234,9 @@ platforms:
       - bionic
   - name: Debian
     versions:
-      - all
-      - etch
       - jessie
-      - lenny
-      - sid
-      - squeeze
+      - buster
       - stretch
-      - wheezy
   - name: EL
     versions:
       - all
