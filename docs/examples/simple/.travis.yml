@@ -19,6 +19,10 @@ env:
     init: /sbin/init
     run_opts: ""
   - distribution: Debian
+    distribution_version: buster
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distribution: Debian
     distribution_version: stretch
     init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"

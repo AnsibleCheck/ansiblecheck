@@ -9,6 +9,7 @@ A One Stop Solution For Checking Your Ansible Roles and Playbooks.
 
 *   [```ubuntu-16.04```, ```ubuntu-xenial``` (*ubuntu-xenial/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/xenial/Dockerfile)
 *   [```ubuntu-18.04```, ```ubuntu-bionic``` (*ubuntu-bionic/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Ubuntu/bionic/Dockerfile)
+*   [```debian-10```, ```debian-buster``` (*debian-buster/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/buster/Dockerfile)
 *   [```debian-9```, ```debian-stretch``` (*debian-stretch/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/stretch/Dockerfile)
 *   [```debian-8```, ```debian-jessie``` (*debian-jessie/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/Debian/jessie/Dockerfile)
 *   [```centos-7```, ```el-7```  (*el-7/Dockerfile*)](https://github.com/AnsibleCheck/ansiblecheck/blob/master/core/EL/7/Dockerfile)
@@ -106,6 +107,10 @@ You can comment out an environment with # on each line of the list item.
   distribution_version: "6"
   init: /sbin/init
   run_opts: ""
+- distribution: Debian
+  distribution_version: buster
+  init: /lib/systemd/systemd
+  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 - distribution: Debian
   distribution_version: stretch
   init: /lib/systemd/systemd
@@ -229,14 +234,9 @@ platforms:
       - bionic
   - name: Debian
     versions:
-      - all
-      - etch
       - jessie
-      - lenny
-      - sid
-      - squeeze
+      - buster
       - stretch
-      - wheezy
   - name: EL
     versions:
       - all
